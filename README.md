@@ -362,12 +362,53 @@ void main()
 ```
 
 游戏打砖
-```C
-
+```Java
+import java.net.*;
+import java.io.*;
+public class URLTest {
+public static void main(String[] args){
+	URL url=null;
+	InputStream is;
+	try{
+		url=new URL(" http://localhost:80/index.html");
+		is=url.openStream();
+		int c;
+		try{
+			while((c=is.read())!=-1)
+				System.out.print((char)c);
+			}
+		catch(IOException e){
+		}
+		finally{
+			is.close();
+		}
+	}
+	catch(MalformedURLException e){
+		e.printStackTrace();
+	}
+	catch(IOException e){
+		e.printStackTrace();
+	}
+	System.out.println("文件名:"+url.getFile());
+    System.out.println("主机名:"+url.getHost());
+    System.out.println("端口号:"+url.getPort());
+    System.out.println("协议名:"+url.getProtocol());
+  }
+}
 ```
 卫星
-```C
-
+```Java
+import java.net.*;
+import java.io.*;
+public class URLReader {
+public static void main(String[] args) throws Exception {
+	URL web = new URL(" http://em.njupt.edu.cn/");
+	BufferedReader in = new BufferedReader(new InputStreamReader(web.openStream()));
+	String inputLine;
+	while ((inputLine = in.readLine()) != null)System.out.println(inputLine);
+	in.close();
+}
+}
 ```
 流星雨
 ```C
